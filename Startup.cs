@@ -36,6 +36,7 @@
             app.Run(async context =>
             {
                 await context.Response.WriteAsync(
+                    "<html><body>" +
                     $"String Setting: {settings.StringSetting}<br>" +
                     $"Date Setting: {settings.DateSetting.ToString("d")}<br>" +
                     $"Boolean Setting: {settings.BooleanSetting}<br><br>" +
@@ -44,6 +45,8 @@
                     $"Nested DateTime Setting: {settings.ObjectSettings.DateTimeSetting}<br><br>");
 
                 await myClass.WriteOtherSettingsAsync(context.Response);
+
+                await context.Response.WriteAsync("</body></html>");
             });
         }
     }
